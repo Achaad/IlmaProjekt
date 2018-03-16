@@ -11,7 +11,10 @@ public class Main {
 		Location myLocation = new Location(s);
 		
 		Weather weather = new Weather(myLocation);
-		
+		System.out.println(weather.getTemp());
+		System.out.println(weather.getWeatherState());
+		System.out.println(weather.getWindSpeed());
+		System.out.println(weather.getLocation());
 		
 	}
 	

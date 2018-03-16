@@ -6,6 +6,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -16,6 +17,7 @@ import org.w3c.dom.NodeList;
 public class XML {
 	
 	/*
+	 * 
 	 * Klassi võiks täiendada nii, et saaks ka Nested TAG'e queryda, kuigi see üks paras müsteerium Javas
 	 * https://www.tutorialspoint.com/java_xml/java_dom_parse_document.htm  <--- Abi
 	 */
@@ -43,7 +45,7 @@ public class XML {
 	}
 	
 	
-
+	//<temperatuur>45</temperatuur>     korral tagastatakse 45.
 	public String getUnNestedTagContent(String tagName) {
 
 		NodeList nList = document.getElementsByTagName(tagName);
@@ -51,6 +53,18 @@ public class XML {
 		return nNode.getTextContent();
 		
 		
+	}
+	
+	
+	//<temperatuur väärtus="45"/>        korral tagastatakse 45, kus temperatuur on "tagName" ja väärtus on "attributeName".
+	public String getTagContentValue(String tagName, String attributeName) {
+		
+		NodeList nList = document.getElementsByTagName(tagName);
+		
+		Node nNode = nList.item(0);
+		Element e = (Element)nNode;
+		
+		return e.getAttribute(attributeName);
 	}
 	
 	

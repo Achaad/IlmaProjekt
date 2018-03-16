@@ -5,9 +5,10 @@ import java.net.URL;
 
 public class Location {
 	
-	//API DARKSKY
-	//freegeoip.net
-	//jsonip.com
+	/*
+	 * TODO: genereerida toString meetod, mul Eclipses ei lase, ei viitsi kirjutada ka :D.
+	 * 
+	 */
 	
 	private String ipAadress;
 	
