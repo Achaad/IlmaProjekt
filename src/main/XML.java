@@ -15,7 +15,10 @@ import org.w3c.dom.NodeList;
 
 public class XML {
 	
-	//TagNAme <Response> siis "Response" on tagName;
+	/*
+	 * Klassi võiks täiendada nii, et saaks ka Nested TAG'e queryda, kuigi see üks paras müsteerium Javas
+	 * https://www.tutorialspoint.com/java_xml/java_dom_parse_document.htm  <--- Abi
+	 */
 	
 	private DocumentBuilderFactory dbFactory;
 	private DocumentBuilder dBuilder;

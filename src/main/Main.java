@@ -10,12 +10,8 @@ public class Main {
 		String s = Util.getIpAddress();
 		Location myLocation = new Location(s);
 		
-		System.out.println(myLocation.getCity());
-
+		Weather weather = new Weather(myLocation);
 		
-		
-		
-
 		
 	}
 	
