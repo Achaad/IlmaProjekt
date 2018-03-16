@@ -16,12 +16,6 @@ public class Weather {
 	private double temp;     //temperatuur
 	private String weatherState; //ilmaolukord, pilvine/päikseline jne.
 	
-	
-	
-	
-	private String apiKey = "2dcab11123ce0b560d14d50c479121c8";
-	
-	
 	public Weather(Location location) {
 		
 		this.location = location;
