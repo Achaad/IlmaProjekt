@@ -11,10 +11,7 @@ public class Main {
 		Location myLocation = new Location(s);
 		
 		System.out.println(myLocation.getCity());
-		System.out.println(myLocation.getCountryCode());
-		System.out.println(myLocation.getCountry());
-		System.out.println(myLocation.getLatitude());
-		System.out.println(myLocation.getLongitude());
+
 		
 		
 		

@@ -26,6 +26,7 @@ public class XML {
 		
 		super();
 		
+		
 		dbFactory = DocumentBuilderFactory.newInstance();
 		try {
 			
