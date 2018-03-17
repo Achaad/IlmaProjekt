@@ -159,8 +159,8 @@ public class Weather {
         // Jätame ainuld need indeksid, mis on enne nädala
         ArrayList<Integer> finalIndexes = new ArrayList<>();
         for (int i = 0; i < indexes.size(); i++) {
-            if(endDate.before(sdf.parse(endTimes[indexes.get(i)]))) {
-                finalIndexes.add(i);
+            if(sdf.parse(endTimes[indexes.get(i)]).before(endDate)) {
+                finalIndexes.add(indexes.get(i));
             }
         }
 
@@ -175,11 +175,12 @@ public class Weather {
         for(int i = 0; i < finalIndexes.size(); i++) {
             int k = finalIndexes.get(i);
             System.out.println();
-            if (startTimes[k].contains("12:00:00")) {
+            if (timePeriods[k].equals("2")) {
                 System.out.println("Aeg: " + onlyDate.format(sdf.parse(startTimes[k])) + " päev.");
             } else {
                 System.out.println("Aeg: " + onlyDate.format(sdf.parse(startTimes[k])) + " öö.");
             }
+
             System.out.println(staatused[k]);
             System.out.println("Temperatuur:  " + Double.parseDouble(temperatuurid[k]) + "\u00b0C");
             System.out.println("Tuulesuund: " + suunad[k]);
