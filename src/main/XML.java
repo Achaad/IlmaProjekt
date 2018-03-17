@@ -1,6 +1,7 @@
 package main;
 
 import java.net.URL;
+import java.security.PublicKey;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -81,8 +82,27 @@ public class XML {
             allContentValues.add(e.getAttribute(attributeName));
         }
 
+        return allContentValues.toArray(new String[allContentValues.size()]);
+    }
 
+    public String[] getAllTagContentValues(String tagName, String attributeName,
+                                           String limitingAttribute, String limitingValue) {
+
+        ArrayList<String> allContentValues = new ArrayList<>();
+
+        NodeList nList = document.getElementsByTagName(tagName);
+
+        for (int i = 0; i < nList.getLength(); i++) {
+            Node nNode = nList.item(i);
+            Element e = (Element)nNode;
+
+            if(e.getAttribute(limitingAttribute) == limitingValue) {
+                allContentValues.add(e.getAttribute(attributeName));
+            }
+
+        }
 
         return allContentValues.toArray(new String[allContentValues.size()]);
     }
+
 }

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -127,6 +128,63 @@ public class Weather {
             System.out.println("Tuulesuund: " + suunad[i]);
             System.out.println("Tuulekiirus: " + Double.parseDouble(kiirused[i]) + " m/s");
             System.out.println("Sademed: " + Double.parseDouble(sademed[i]) + " mm");
+        }
+    }
+
+    public void printWeatherForWeek() throws ParseException {
+
+        // Leiame indeksid, mille kohta näitame andmed
+        String[] endTimes = xml.getAllTagContentValues("time", "to");
+        String[] startTimes = xml.getAllTagContentValues("time", "from");
+        String[] timePeriods = xml.getAllTagContentValues("time", "period");
+
+        Date currentDate = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentDate);
+        c.add(Calendar.DATE, 7);
+        Date endDate = c.getTime();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+        // Leiame kõik indeksid, mis vastavad lõunale või südaööle
+        int index = 0;
+        ArrayList<Integer> indexes = new ArrayList<>();
+        for (String period : timePeriods) {
+            if (period.equals("2") || period.equals("0")) {
+                indexes.add(index);
+            }
+            index++;
+        }
+
+        // Jätame ainuld need indeksid, mis on enne nädala
+        ArrayList<Integer> finalIndexes = new ArrayList<>();
+        for (int i = 0; i < indexes.size(); i++) {
+            if(endDate.before(sdf.parse(endTimes[indexes.get(i)]))) {
+                finalIndexes.add(i);
+            }
+        }
+
+        // Nüüd printime välja ilm
+        String[] staatused = xml.getAllTagContentValues("symbol", "name");
+        String[] temperatuurid = xml.getAllTagContentValues("temperature", "value");
+        String[] kiirused = xml.getAllTagContentValues("windSpeed", "mps");
+        String[] suunad = xml.getAllTagContentValues("windDirection", "code");
+        String[] sademed = xml.getAllTagContentValues("precipitation", "value");
+
+        SimpleDateFormat onlyDate = new SimpleDateFormat("dd.MM.yyyy");
+        for(int i = 0; i < finalIndexes.size(); i++) {
+            int k = finalIndexes.get(i);
+            System.out.println();
+            if (startTimes[k].contains("12:00:00")) {
+                System.out.println("Aeg: " + onlyDate.format(sdf.parse(startTimes[k])) + " päev.");
+            } else {
+                System.out.println("Aeg: " + onlyDate.format(sdf.parse(startTimes[k])) + " öö.");
+            }
+            System.out.println(staatused[k]);
+            System.out.println("Temperatuur:  " + Double.parseDouble(temperatuurid[k]) + "\u00b0C");
+            System.out.println("Tuulesuund: " + suunad[k]);
+            System.out.println("Tuulekiirus: " + Double.parseDouble(kiirused[k]) + " m/s");
+            System.out.println("Sademed: " + Double.parseDouble(sademed[k]) + " mm");
         }
     }
 }

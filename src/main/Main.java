@@ -34,6 +34,10 @@ public class Main {
                 break;
             }
 
+            case 2: {
+                weather.printWeatherForWeek();
+                break;
+            }
             default : weather.printWeatherNow();
         }
     }
