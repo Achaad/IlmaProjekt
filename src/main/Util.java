@@ -6,23 +6,23 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 public class Util {
-	
-	//Abifunktsioon, mis pärib IP aadressi lehelt http://checkip.amazonaws.com/ ja tagastab Stringina.
-	public static String getIpAddress() {
-		
-		String ip = "";
-		
-		try {
-			
-			URL whatismyip = new URL("http://checkip.amazonaws.com");
-			BufferedReader in = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
-			ip = in.readLine();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return ip;
-	}
+
+    //Abifunktsioon, mis pï¿½rib IP aadressi lehelt http://checkip.amazonaws.com/ ja tagastab Stringina.
+    public static String getIpAddress() {
+
+        String ip = "";
+
+        try {
+
+            URL whatismyip = new URL("http://checkip.amazonaws.com");
+            BufferedReader in = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
+            ip = in.readLine();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return ip;
+    }
 
 }
