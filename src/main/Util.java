@@ -7,7 +7,7 @@ import java.net.URL;
 
 public class Util {
 
-    //Abifunktsioon, mis p�rib IP aadressi lehelt http://checkip.amazonaws.com/ ja tagastab Stringina.
+    //Abifunktsioon, mis pärib IP aadressi lehelt http://checkip.amazonaws.com/ ja tagastab Stringina.
     public static String getIpAddress() {
 
         String ip = "";

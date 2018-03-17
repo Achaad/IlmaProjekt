@@ -11,14 +11,14 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-//Klass mis sisaldab abifunktsiooni XML andmete t��tlemiseks
+//Klass mis sisaldab abifunktsiooni XML andmete töötlemiseks
 
 
 public class XML {
 
     /*
      *
-     * Klassi v�iks t�iendada nii, et saaks ka Nested TAG'e queryda, kuigi see �ks paras m�steerium Javas
+     * Klassi võiks täiendada nii, et saaks ka Nested TAG'e queryda, kuigi see üks paras müsteerium Javas
      * https://www.tutorialspoint.com/java_xml/java_dom_parse_document.htm  <--- Abi
      */
 
@@ -66,16 +66,4 @@ public class XML {
 
         return e.getAttribute(attributeName);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }

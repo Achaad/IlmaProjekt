@@ -21,9 +21,14 @@ public class Main {
         // Prindib välja ilma näitajad
         System.out.println(weather.getWeatherState());
         System.out.println("Temperatuur:  " + weather.getTemp() + "\u00b0C");
+        System.out.println("Tuulesuund: " + weather.getWindDirection());
         System.out.println("Tuulekiirus: " + weather.getWindSpeed() + " m/s");
+        System.out.println("Sademed: " + weather.getPrecipitation() + " mm");
         //System.out.println(weather.getLocation()); Minu arust tagastab liiga palju infot tava kasutajale
 
+        // Printib välja, et me kasutame www.yr.no. Nii on nõutud nende XML's.
+        // Midagi ei juhtu, kui me seda teeme, kuid parem mainida.
+        System.out.println("\n\nWeather forecast from Yr, delivered by the Norwegian Meteorological Institute and the NRK.");
     }
 
 

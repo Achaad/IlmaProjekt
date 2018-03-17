@@ -18,6 +18,8 @@ public class Weather {
     private double temp;     //temperatuur
     private double windSpeed; //Tuulekiirus
     private String weatherState; //ilmaolukord, pilvine/p�ikseline jne.
+    private String windDirection; // tuulesuund
+    private Double precipitation; // sademed
 
 
     public Weather(Location location) {
@@ -30,6 +32,8 @@ public class Weather {
             weatherState = xml.getTagContentValue("symbol", "name");
             temp = Double.parseDouble(xml.getTagContentValue("temperature", "value"));
             windSpeed = Double.parseDouble(xml.getTagContentValue("windSpeed", "mps"));
+            windDirection = xml.getTagContentValue("windDirection", "code");
+            precipitation = Double.parseDouble(xml.getTagContentValue("precipitation", "value"));
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -58,8 +62,11 @@ public class Weather {
         return weatherState;
     }
 
+    public String getWindDirection() {
+        return windDirection;
+    }
 
-
-
-
+    public Double getPrecipitation() {
+        return precipitation;
+    }
 }
