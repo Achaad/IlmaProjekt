@@ -69,4 +69,26 @@ public class Weather {
     public Double getPrecipitation() {
         return precipitation;
     }
+
+    public void printWeatherNow() {
+        System.out.println("Ilm hetkel:");
+
+        // Prindib välja ilma näitajad
+        System.out.println(getWeatherState());
+        System.out.println("Temperatuur:  " + getTemp() + "\u00b0C");
+        System.out.println("Tuulesuund: " + getWindDirection());
+        System.out.println("Tuulekiirus: " + getWindSpeed() + " m/s");
+        System.out.println("Sademed: " + getPrecipitation() + " mm");
+        //System.out.println(weather.getLocation()); Minu arust tagastab liiga palju infot tava kasutajale
+    }
+
+    public void printWeatherHourly() {
+        /*NodeList nList = document.getElementsByTagName(tagName);
+
+        Node nNode = nList.item(0);
+        Element e = (Element)nNode;
+
+        return e.getAttribute(attributeName);
+        */
+    }
 }

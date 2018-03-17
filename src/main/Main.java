@@ -16,19 +16,21 @@ public class Main {
         System.out.println("Tere!");
         System.out.println("Teie asukoht on " + myLocation.getCity() + ", "
                 + myLocation.getRegionName() + ", "  + myLocation.getCountry() + ".\n");
-        System.out.println("Ilm hetkel:");
 
-        // Prindib välja ilma näitajad
-        System.out.println(weather.getWeatherState());
-        System.out.println("Temperatuur:  " + weather.getTemp() + "\u00b0C");
-        System.out.println("Tuulesuund: " + weather.getWindDirection());
-        System.out.println("Tuulekiirus: " + weather.getWindSpeed() + " m/s");
-        System.out.println("Sademed: " + weather.getPrecipitation() + " mm");
-        //System.out.println(weather.getLocation()); Minu arust tagastab liiga palju infot tava kasutajale
+        // Küsime, kas kasutaja soovib hetke ilma või ilmaprognoosi
+        UserQuery küsitleja = new UserQuery();
+        int misIlm = küsitleja.askWhichForecast(); // "0" = ilm hetkel, "1" = päeva prognoos, "2" = nödala prognoos
+        switch (misIlm) {
+            case 0 : {
+                System.out.println();
+                weather.printWeatherNow();
+                break;
+            }
 
-        // Printib välja, et me kasutame www.yr.no. Nii on nõutud nende XML's.
-        // Midagi ei juhtu, kui me seda teeme, kuid parem mainida.
-        System.out.println("\n\nWeather forecast from Yr, delivered by the Norwegian Meteorological Institute and the NRK.");
+            case 1 : break;
+
+            default : weather.printWeatherNow();
+        }
     }
 
 
