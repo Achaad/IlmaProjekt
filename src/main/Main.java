@@ -1,9 +1,11 @@
 package main;
 
 
+import java.text.ParseException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
 
         String s = Util.getIpAddress();
@@ -27,7 +29,10 @@ public class Main {
                 break;
             }
 
-            case 1 : break;
+            case 1 : {
+                weather.printWeatherHourly();
+                break;
+            }
 
             default : weather.printWeatherNow();
         }

@@ -1,6 +1,7 @@
 package main;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -67,5 +68,21 @@ public class XML {
         return e.getAttribute(attributeName);
     }
 
+    public String[] getAllTagContentValues(String tagName, String attributeName) {
 
+        ArrayList<String> allContentValues = new ArrayList<>();
+
+        NodeList nList = document.getElementsByTagName(tagName);
+
+        for (int i = 0; i < nList.getLength(); i++) {
+            Node nNode = nList.item(i);
+            Element e = (Element)nNode;
+
+            allContentValues.add(e.getAttribute(attributeName));
+        }
+
+
+
+        return allContentValues.toArray(new String[allContentValues.size()]);
+    }
 }

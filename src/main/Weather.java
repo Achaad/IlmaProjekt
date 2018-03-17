@@ -2,6 +2,12 @@ package main;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class Weather {
 
@@ -82,13 +88,45 @@ public class Weather {
         //System.out.println(weather.getLocation()); Minu arust tagastab liiga palju infot tava kasutajale
     }
 
-    public void printWeatherHourly() {
-        /*NodeList nList = document.getElementsByTagName(tagName);
+    // Miskipärast ei soovi töötada ilma "throws ParseException"
+    public void printWeatherHourly() throws ParseException {
 
-        Node nNode = nList.item(0);
-        Element e = (Element)nNode;
+        // Leiame indeksi, milleni näitame andmed
+        String[] endTimes = xml.getAllTagContentValues("time", "to");
+        String[] startTimes = xml.getAllTagContentValues("time", "from");
+        int endIndex = 0;
 
-        return e.getAttribute(attributeName);
-        */
+        Date currentDate = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentDate);
+        c.add(Calendar.DATE, 1);
+        Date dayLater = c.getTime();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+        for (String time : endTimes) {
+            Date d = sdf.parse(time);
+
+            if (d.before(dayLater)) {
+                endIndex++;
+            }
+        }
+
+        // Nüüd printime välja ilm
+        String[] staatused = xml.getAllTagContentValues("symbol", "name");
+        String[] temperatuurid = xml.getAllTagContentValues("temperature", "value");
+        String[] kiirused = xml.getAllTagContentValues("windSpeed", "mps");
+        String[] suunad = xml.getAllTagContentValues("windDirection", "code");
+        String[] sademed = xml.getAllTagContentValues("precipitation", "value");
+
+        for(int i = 0; i <= endIndex; i++) {
+            System.out.println();
+            System.out.println("Aeg: " + sdf.parse(startTimes[i]) + " - " + sdf.parse(endTimes[i]));
+            System.out.println(staatused[i]);
+            System.out.println("Temperatuur:  " + Double.parseDouble(temperatuurid[i]) + "\u00b0C");
+            System.out.println("Tuulesuund: " + suunad[i]);
+            System.out.println("Tuulekiirus: " + Double.parseDouble(kiirused[i]) + " m/s");
+            System.out.println("Sademed: " + Double.parseDouble(sademed[i]) + " mm");
+        }
     }
 }
