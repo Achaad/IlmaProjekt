@@ -5,11 +5,6 @@ import java.net.URL;
 
 public class Location {
 
-    /*
-     * TODO: genereerida toString meetod, mul Eclipses ei lase, ei viitsi kirjutada ka :D.
-     *
-     */
-
     private String ipAadress;
 
     private String apiAadress = "https://freegeoip.net/xml/";
