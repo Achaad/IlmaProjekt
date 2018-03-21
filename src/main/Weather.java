@@ -15,11 +15,11 @@ public class Weather {
 
     //Klass, mis tagastab ilmaelemente mingi "Location" objekti kohta
     /*
-     * TODO: m�elda v�lja mis v�ljasi me siis kasutada tahame.
+     *
      * N�idislink XML: http://www.yr.no/place/Estonia/Harjumaa/Tallinn/forecast.xml
      */
 
-    private Location location; // vb pole seda siia vajagi kui konstruktoris k�ik �ra k�sime.
+    private Location location;
     private XML xml;
 
     private double temp;     //temperatuur

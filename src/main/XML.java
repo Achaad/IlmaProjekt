@@ -13,15 +13,14 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-//Klass mis sisaldab abifunktsiooni XML andmete töötlemiseks
+
 
 
 public class XML {
 
     /*
-     *
-     * Klassi võiks täiendada nii, et saaks ka Nested TAG'e queryda, kuigi see üks paras müsteerium Javas
-     * https://www.tutorialspoint.com/java_xml/java_dom_parse_document.htm  <--- Abi
+    //Klass mis sisaldab abifunktsioone XML andmete töötlemiseks
+     *Kasutame XML andmete lugemiseks DOM
      */
 
     private DocumentBuilderFactory dbFactory;
@@ -69,6 +68,7 @@ public class XML {
         return e.getAttribute(attributeName);
     }
 
+    //Tagastab massiivi kõikide tagide attribuutide väärtustega.
     public String[] getAllTagContentValues(String tagName, String attributeName) {
 
         ArrayList<String> allContentValues = new ArrayList<>();
@@ -85,6 +85,7 @@ public class XML {
         return allContentValues.toArray(new String[allContentValues.size()]);
     }
 
+    //Tagastab massiivi mingite kindlate attribuut väärtustega elementidest.
     public String[] getAllTagContentValues(String tagName, String attributeName,
                                            String limitingAttribute, String limitingValue) {
 
@@ -96,7 +97,7 @@ public class XML {
             Node nNode = nList.item(i);
             Element e = (Element)nNode;
 
-            if(e.getAttribute(limitingAttribute) == limitingValue) {
+            if(e.getAttribute(limitingAttribute).equals(limitingValue)) {
                 allContentValues.add(e.getAttribute(attributeName));
             }
 

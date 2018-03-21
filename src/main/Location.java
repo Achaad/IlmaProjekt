@@ -72,14 +72,6 @@ public class Location {
         return countryCode;
     }
 
-
-
-    public void setIpAadress(String ipAadress) {
-        this.ipAadress = ipAadress;
-    }
-
-
-
     public String getLongitude() {
         return longitude;
     }
