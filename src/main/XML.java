@@ -41,7 +41,7 @@ public class XML {
 
         } catch (Exception e) {
 
-            e.printStackTrace();
+            StackTraceElement[] exception = e.getStackTrace();
         }
     }
 
