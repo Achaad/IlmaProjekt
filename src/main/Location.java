@@ -21,6 +21,13 @@ public class Location {
 
     private String city;
 
+    //Konstruktor juhuks, kui IP abil tuleb vales formaadis asukoht.
+    public Location(String country, String regionName, String city){
+        this.country = country;
+        this.regionName = regionName;
+        this.city = city;
+    }
+    //Konstruktor, mis võtab andmed IP aadressi järgi
     public Location(String ipAadress) {
         super();
         this.ipAadress = ipAadress;
